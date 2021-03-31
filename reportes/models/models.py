@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
 
 
-# class reportes(models.Model):
-#     _name = 'reportes.reportes'
-#     _description = 'reportes.reportes'
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    pro_services = fields.Selection(
+        string="Servicios Profesionales",
+        selection=[
+            ('0', "Implementación"),
+            ('1', "Capacitación"),
+            ('2', "Acompañamiento"),
+
+
+        ]
+
+    )
